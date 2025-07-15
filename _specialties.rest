@@ -1,0 +1,36 @@
+#******************************#
+# *** SPECIALTIES RESOURCE *** #
+
+## ? ALL ROUTES ARE AUTHORIZED ? ##
+
+### CREATE NEW SPECIALTY
+POST /specs HTTP/1.1
+Host: {{BASE_URL}}
+Content-Type: application/json
+
+{
+    "title": "cardiology",
+    "avgVisitTime": 15
+}
+
+### GET SPECIALTIES
+GET /specs HTTP/1.1
+Host: {{BASE_URL}}
+
+### GET SPECIALTY
+GET /specs/cmcy267f20001kgywhh60j2da HTTP/1.1
+Host: {{BASE_URL}}
+
+### UPDATE SPECIALTY
+PUT /specs/cmcy9dm1v0000kg26cya3euml HTTP/1.1
+Host: {{BASE_URL}}
+Content-Type: application/json
+
+{
+    "title": "cardiology",
+    "avgVisitTime": 20
+}
+
+### DELETE SPECIALTY
+DELETE /specs/cmcy9dm1v0000kg26cya3euml HTTP/1.1
+Host: {{BASE_URL}}

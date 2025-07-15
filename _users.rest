@@ -1,0 +1,74 @@
+#***********************#
+# *** USER RESOURCE *** #
+
+## ? UNAUTHENTICATED ROUTES ? ##
+
+### USER REGISTER
+POST /auth/register HTTP/1.1
+Host: {{BASE_URL}}
+Content-Type: application/json
+
+{
+  "name": "محمدرضا",
+  "lastName": "مرادی",
+  "email": "mrzm141@yahoo.com",
+  "password": "Secret123!",
+  "gender": "man",
+  "location": "اصفهان",
+  "phoneNumber": "+989138129921",
+  "role": "user"
+}
+
+### USER LOGIN
+POST /auth/login HTTP/1.1
+Host: {{BASE_URL}}
+Content-Type: application/json
+
+{
+  "email": "pm0@promeds.com",
+  "password": "safePass0!"
+}
+
+## ? AUTHENTICATED ROUTES ? ##
+
+### GET USER
+GET /users/cmcxr4j4l0000kgs40g5fxgg2 HTTP/1.1
+Host: {{BASE_URL}}
+
+## ? AUTHORIZED ROUTES ? ##
+
+### CREATE USER (ADMIN)
+POST /users HTTP/1.1
+Host: {{BASE_URL}}
+Content-Type: application/json
+
+{
+  "name": "PROMEDS",
+  "lastName": "OFFICIAL ACCOUNT",
+  "email": "pm0@promeds.com",
+  "password": "safePass0!",
+  "gender": null,
+  "location": "Promeds Institute",
+  "phoneNumber": "+989150003301",
+  "role": "admin"
+}
+
+### GET USERS (ADMIN)
+GET /users HTTP/1.1
+Host: {{BASE_URL}}
+
+### UPDATE USER (ADMIN)
+PATCH  /users/cmcxr4j4l0000kgs40g5fxgg2 HTTP/1.1
+Host: {{BASE_URL}}
+Content-Type: application/json
+
+{
+  "email": "sw22@gmail.com",
+  "location": "George Town"
+}
+
+### DELETE USER (ADMIN)
+DELETE /users/cmcxr4xk10002kgs4hzb0khin HTTP/1.1
+Host: {{BASE_URL}}
+
+

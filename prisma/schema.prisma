@@ -1,0 +1,117 @@
+generator client {
+  provider        = "prisma-client-js"
+  output          = "../generated/prisma"
+  previewFeatures = ["strictUndefinedChecks"]
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Specialty {
+  id           String        @id @default(cuid())
+  title        Field         @unique
+  avgVisitTime Int?          @default(10)
+  doctors      Staff[]
+  Appointment  Appointment[]
+}
+
+model Staff {
+  id             String        @id @default(cuid())
+  name           String
+  lastName       String
+  personnelId    String        @unique
+  personnelEmail String        @unique
+  password       String
+  gender         Gender
+  phoneNumber    String?
+  avatarUrl      String?
+  avatarPublicId String?       @unique
+  workingDays    String
+  workingHours   String
+  specialty      Specialty?    @relation(fields: [specialtyId], references: [id], onDelete: SetNull)
+  specialtyId    String?
+  appointments   Appointment[]
+  messages       StaffLog[]
+  role           Role          @default(staff)
+  createdAt      DateTime?     @default(now())
+}
+
+model User {
+  id             String        @id @default(cuid())
+  name           String
+  lastName       String
+  email          String        @unique
+  password       String
+  gender         Gender
+  location       String
+  phoneNumber    String?
+  avatarUrl      String?
+  avatarPublicId String?
+  appointments   Appointment[]
+  role           Role          @default(user)
+  messages       UserLog[]
+  StaffLog       StaffLog[]
+  createdAt      DateTime?     @default(now())
+}
+
+model Appointment {
+  id         String    @id @default(cuid())
+  patient    User?     @relation(fields: [patientId], references: [id], onDelete: SetNull)
+  patientId  String?
+  reason     Specialty @relation(fields: [reasonId], references: [id], onDelete: Cascade)
+  reasonId   String
+  doctor     Staff     @relation(fields: [doctorId], references: [id], onDelete: Cascade)
+  doctorId   String
+  date       DateTime? @default(now())
+  time       String
+  expired    Boolean   @default(false)
+  reservedAt DateTime? @default(now())
+}
+
+model StaffLog {
+  id          String    @id @default(cuid())
+  owner       Staff     @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  ownerId     String
+  sender      User?     @relation(fields: [senderId], references: [id], onDelete: SetNull)
+  senderId    String?
+  title       String?
+  message     String
+  isRead      Boolean   @default(false)
+  generatedAt DateTime? @default(now())
+}
+
+model UserLog {
+  id          String    @id @default(cuid())
+  owner       User      @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  ownerId     String
+  title       String?
+  message     String
+  isRead      Boolean   @default(false)
+  generatedAt DateTime? @default(now())
+}
+
+enum Gender {
+  man
+  woman
+}
+
+enum Role {
+  admin
+  user
+  staff
+}
+
+enum Field {
+  dentistry // دندانپزشکی
+  cardiology // تخصص قلب
+  pediatrics // تخصص اطفال
+  dermatology // تخصص پوست
+  cosmetology // تخصص زیبایی
+  orthopedics // تخصص ارتوپد
+  anesthesiology // تخصص بیهوشی
+  dietetics // تخصص تغذیه
+  ophthalmology // تخصص چشم
+  respiratorySpecialty // تخصص تنفسی
+}

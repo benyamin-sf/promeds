@@ -1,0 +1,40 @@
+#**************************#
+# *** GLOBAL RESOURCES *** #
+
+## ? AUTHENTICATED ROUTES ? ##
+
+### LOGOUT
+GET /logout HTTP/1.1
+Host: {{BASE_URL}}
+
+### GET CURRENT LOGGED-IN
+GET /logged-user HTTP/1.1
+Host: {{BASE_URL}}
+
+### UPDATE SELF
+PUT /update-self HTTP/1.1
+Host: {{BASE_URL}}
+Content-Type: application/json
+
+{
+  "name": "میمندیان",
+  "lastName": "بنیامین",
+  "email": "ben.8108.1611@gmail.com",
+  "password": "Secret123!",
+  "gender": "man",
+  "location": "مشهد",
+  "phoneNumber": "+989124259211",
+  "role": "user"
+}
+
+### DAILY SPECIALTIES (doctor's with these specialties that are working today)
+GET /get-daily-specialties HTTP/1.1
+Host: {{BASE_URL}}
+
+### GET ALL APP STATS
+GET /app-stats HTTP/1.1
+Host: {{BASE_URL}}
+
+### GET STAFF TIMELINE DATA
+GET /staff-timeline HTTP/1.1
+Host: {{BASE_URL}}

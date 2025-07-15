@@ -1,0 +1,40 @@
+#*******************************#
+# *** APPOINTMENTS RESOURCE *** #
+
+## ? ALL ROUTES ARE AUTHENTICATED ? ##
+
+### NEW APPOINTMENT
+POST /appointments HTTP/1.1
+Host: {{BASE_URL}}
+Content-Type: application/json
+
+{
+    "doctor": "cmd1c3c37000qkg7wo8bdpeio",
+    "time": "13:30"
+}
+
+### GET APPOINTMENT
+GET /appointments/cmd1dqn6s0000kg3w8tx146gb HTTP/1.1
+Host: {{BASE_URL}}
+
+### GET USER APPOINTMENTS
+GET /appointments/logged-user HTTP/1.1
+Host: {{BASE_URL}}
+
+### GET TODAY APPOINTMENTS
+GET /appointments/today-appointments HTTP/1.1
+Host: {{BASE_URL}}
+
+## ? AUTHORIZED ROUTES ? ##
+
+### GET ALL APPOINTMENTS
+GET /appointments HTTP/1.1
+Host: {{BASE_URL}}
+
+### UPDATE APPOINTMENT
+PATCH  /appointments/cmd1hbj3g0000kgak8vedobtu HTTP/1.1
+Host: {{BASE_URL}}
+
+### DELETE APPOINTMENT
+DELETE /appointments/cmcynx32d0000kgr731bc7k3r HTTP/1.1
+Host: {{BASE_URL}}

@@ -1,0 +1,76 @@
+#************************#
+# *** STAFF RESOURCE *** #
+
+## ? UNAUTHENTICATED ROUTES ? ##
+
+### STAFF LOGIN
+POST /auth/staff/login HTTP/1.1
+Host: {{BASE_URL}}
+Content-Type: application/json
+
+{
+  "personnelEmail": "ht809@hospital.org",
+  "personnelId": "PM1254",
+  "password": "Secter123!"
+}
+
+## ? AUTHENTICATED ROUTES ? ##
+
+### UPDATE STAFF MEMBER
+PUT /staff/cmd1a9qjv0000kgci3ldtfco2 HTTP/1.1
+Host: {{BASE_URL}}
+Content-Type: application/json
+
+{
+    "name": "حسن",
+    "lastName": "تقی زاده",
+    "personnelId": "PM1254",
+    "personnelEmail": "ht809@hospital.org",
+    "password": "Secter123!",
+    "gender": "man",
+    "phoneNumber": "+989123142297",
+    "workingDays": ["saturday", "monday", "wednesday", "friday"],
+    "workingHours": "06:30-13:00",
+    "specialty": "dentistry"
+}
+
+## ? AUTHORIZED ROUTES ? ##
+
+### CREATE STAFF MEMBER (ADMIN)
+POST /staff HTTP/1.1
+Host: {{BASE_URL}}
+Content-Type: application/json
+
+{
+    "name": "علیرضا",
+    "lastName": "زادبر",
+    "personnelId": "PM0785",
+    "personnelEmail": "zadbar21@hospital.org",
+    "password": "Secter123!",
+    "gender": "man",
+    "phoneNumber": "+989910025768",
+    "workingDays": ["monday", "tuesday", "thursday", "saturday"],
+    "workingHours": "10:00-18:30",
+    "specialty": "orthopedics"
+}
+
+# !WEEK DAYS
+# saturday
+# sunday
+# monday
+# tuesday
+# wednesday
+# thursday
+# friday
+
+### GET STAFF (ADMIN)
+GET /staff HTTP/1.1
+Host: {{BASE_URL}}
+
+### GET STAFF MEMBER (ADMIN)
+GET /staff/cmd1a9qjv0000kgci3ldtfco2 HTTP/1.1
+Host: {{BASE_URL}}
+
+### DELETE STAFF MEMBER (ADMIN)
+DELETE /staff/cmd1a9qjv0000kgci3ldtfco2 HTTP/1.1
+Host: {{BASE_URL}}

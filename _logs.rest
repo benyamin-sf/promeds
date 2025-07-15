@@ -1,0 +1,24 @@
+#***********************#
+# *** LOGS RESOURCE *** #
+
+## ? ALL ROUTES ARE AUTHENTICATED ? ##
+
+### GET UNREAD COUNT (self)
+GET /logs/logged-user-unread HTTP/1.1
+Host: {{BASE_URL}}
+
+### GET LOGS (self)
+GET /logs/logged-user HTTP/1.1
+Host: {{BASE_URL}}
+
+### GET LOG
+GET /logs/:id HTTP/1.1
+Host: {{BASE_URL}}
+
+### UPDATE LOG
+PATCH /logs/:id HTTP/1.1
+Host: {{BASE_URL}}
+
+### DELETE LOG
+DELETE /logs/:id HTTP/1.1
+Host: {{BASE_URL}}
