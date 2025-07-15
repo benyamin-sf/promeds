@@ -11,7 +11,7 @@
     "build": "cd client && npm run build",
     "db:push": "npx prisma db push",
     "setup-proj": "npm i && cd client && npm i",
-    "setup-prod": "npm-run-all --sequential setup-proj build db:push"
+    "setup-prod": "npm-run-all --sequential setup-proj build"
   },
   "keywords": [],
   "author": "",
